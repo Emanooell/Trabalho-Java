@@ -48,4 +48,15 @@ public class Aluno {
         // Se você não tem essa lógica ainda, retorne 0 ou implemente conforme necessário
         return 0;
     }
+    // Adicione esses métodos à classe Aluno
+public void adicionarCargaHorariaAtividade(int cargaHoraria) {
+    this.cargaHorariaTotal += cargaHoraria;
+}
+
+public void atualizarStatusAtividade(boolean statusAproveitamento, int cargaHorariaConsiderada) {
+    if (statusAproveitamento) {
+        adicionarCargaHoraria(cargaHorariaConsiderada);
+    }
+}
+
 }
