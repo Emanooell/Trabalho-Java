@@ -73,18 +73,24 @@ public class Main {
 
                         
                 
-                        // Criação da atividade complementar
-                        AtividadeComplementar atividade = new AtividadeComplementar(alunoEncontrado.getNomeCompleto(), alunoEncontrado.getMatricula(), numeroRegistro, grupoAtividade, descricaoAtividade, cargaHoraria);
-                        atividades.add(atividade);
-                
-                        // Adiciona a carga horária ao aluno correspondente
-                        alunoEncontrado.adicionarCargaHoraria(cargaHoraria);
-                
-                        System.out.println("Atividade complementar cadastrada para o aluno com matrícula " + matriculaAluno + "!");
-                    } else {
-                        System.out.println("Aluno com matrícula " + matriculaAluno + " não encontrado. Cadastre o aluno primeiro.");
-                    }
-                    break;
+                         System.out.println("Tem certeza que deseja cadastrar a atividade complementar para o aluno? (s/n)");
+        String confirmacaoAtividade = scanner.nextLine().toLowerCase();
+        if (confirmacaoAtividade.equals("s")) {
+            // Criação da atividade complementar
+            AtividadeComplementar atividade = new AtividadeComplementar(alunoEncontrado.getNomeCompleto(), alunoEncontrado.getMatricula(), numeroRegistro, grupoAtividade, descricaoAtividade, cargaHoraria);
+            atividades.add(atividade);
+
+            // Adiciona a carga horária ao aluno correspondente
+            alunoEncontrado.adicionarCargaHoraria(cargaHoraria);
+
+            System.out.println("Atividade complementar cadastrada para o aluno com matrícula " + matriculaAluno + "!");
+        } else {
+            System.out.println("Cadastro de atividade complementar cancelado.");
+        }
+    } else {
+        System.out.println("Aluno com matrícula " + matriculaAluno + " não encontrado. Cadastre o aluno primeiro.");
+    }
+    break;
                 
                 
 
