@@ -15,41 +15,41 @@ public class Main {
             System.out.println("2- Cadastrar atividade complementar");
             System.out.println("3- Pesquisar as atividades complementares de um aluno");
             System.out.println("4- Alterar status da atividade complementar");
-            System.out.println("5- Mostrar a carga horária total das atividades complementares de todos os alunos cadastrados");
+            System.out.println(
+                    "5- Mostrar a carga horária total das atividades complementares de todos os alunos cadastrados");
             System.out.println("6- Mostrar a carga horária total das atividades complementares de um aluno cadastrado");
             System.out.println("7- Sair do sistema");
 
             int escolha = scanner.nextInt();
-            scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+            scanner.nextLine(); 
 
             switch (escolha) {
                 case 1:
-    System.out.println("Informe o nome do aluno:");
-    String nomeAluno = scanner.nextLine();
-    System.out.println("Informe a matrícula do aluno:");
-    int matricula = scanner.nextInt();
-    scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
-    System.out.println("Informe o curso do aluno:");
-    String curso = scanner.nextLine();
+                    System.out.println("Informe o nome do aluno:");
+                    String nomeAluno = scanner.nextLine();
+                    System.out.println("Informe a matrícula do aluno:");
+                    int matricula = scanner.nextInt();
+                    scanner.nextLine(); 
+                    System.out.println("Informe o curso do aluno:");
+                    String curso = scanner.nextLine();
 
-    System.out.println("Tem certeza que deseja cadastrar um aluno? (s/n)");
-    String confirmacaoAluno = scanner.nextLine().toLowerCase();
-    if (confirmacaoAluno.equals("s")) {
-        aluno = new Aluno(nomeAluno, matricula, curso);
-        alunos.add(aluno);
-        System.out.println("Aluno cadastrado!");
-    } else {
-        System.out.println("Operação de cadastro de aluno cancelada.");
-    }
-    break;
-
+                    System.out.println("Tem certeza que deseja cadastrar um aluno? (s/n)");
+                    String confirmacaoAluno = scanner.nextLine().toLowerCase();
+                    if (confirmacaoAluno.equals("s")) {
+                        aluno = new Aluno(nomeAluno, matricula, curso);
+                        alunos.add(aluno);
+                        System.out.println("Aluno cadastrado!");
+                    } else {
+                        System.out.println("Operação de cadastro de aluno cancelada.");
+                    }
+                    break;
 
                     case 2:
                     System.out.println("Informe a matrícula do aluno:");
                     int matriculaAluno = scanner.nextInt();
-                    scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
-                
-                    // Verifica se o aluno com a matrícula informada existe na lista de alunos
+                    scanner.nextLine(); 
+    
+                    
                     Aluno alunoEncontrado = null;
                     for (Aluno a : alunos) {
                         if (a.getMatricula() == matriculaAluno) {
@@ -57,47 +57,45 @@ public class Main {
                             break;
                         }
                     }
-                
+    
                     if (alunoEncontrado != null) {
-                        System.out.println("Informe o número do registro da atividade:");
-                        int numeroRegistro = scanner.nextInt();
-                        scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
                         System.out.println("Informe o número do grupo da atividade:");
                         int grupoAtividade = scanner.nextInt();
-                        scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+                        scanner.nextLine(); 
                         System.out.println("Informe a descrição da atividade:");
                         String descricaoAtividade = scanner.nextLine();
                         System.out.println("Qual a carga horária?");
                         int cargaHoraria = scanner.nextInt();
-                        scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
-
-                        
-                
-                         System.out.println("Tem certeza que deseja cadastrar a atividade complementar para o aluno? (s/n)");
-        String confirmacaoAtividade = scanner.nextLine().toLowerCase();
-        if (confirmacaoAtividade.equals("s")) {
-            // Criação da atividade complementar
-            AtividadeComplementar atividade = new AtividadeComplementar(alunoEncontrado.getNomeCompleto(), alunoEncontrado.getMatricula(), numeroRegistro, grupoAtividade, descricaoAtividade, cargaHoraria);
-            atividades.add(atividade);
-
-            // Adiciona a carga horária ao aluno correspondente
-            alunoEncontrado.adicionarCargaHoraria(cargaHoraria);
-
-            System.out.println("Atividade complementar cadastrada para o aluno com matrícula " + matriculaAluno + "!");
-        } else {
-            System.out.println("Cadastro de atividade complementar cancelado.");
-        }
-    } else {
-        System.out.println("Aluno com matrícula " + matriculaAluno + " não encontrado. Cadastre o aluno primeiro.");
-    }
-    break;
-                
-                
+                        scanner.nextLine(); 
+    
+                        System.out.println(
+                                "Tem certeza que deseja cadastrar a atividade complementar para o aluno? (s/n)");
+                        String confirmacaoAtividade = scanner.nextLine().toLowerCase();
+                        if (confirmacaoAtividade.equals("s")) {
+                         
+                            AtividadeComplementar atividade = new AtividadeComplementar(
+                                    alunoEncontrado.getNomeCompleto(), alunoEncontrado.getMatricula(), grupoAtividade,
+                                    descricaoAtividade, cargaHoraria);
+                            atividades.add(atividade);
+    
+                          
+                            alunoEncontrado.adicionarCargaHorariaAtividade(cargaHoraria);
+    
+                            System.out.println("Atividade complementar cadastrada para o aluno com matrícula "
+                                    + matriculaAluno + "!");
+                        } else {
+                            System.out.println("Cadastro de atividade complementar cancelado.");
+                        }
+                    } else {
+                        System.out.println("Aluno com matrícula " + matriculaAluno
+                                + " não encontrado. Cadastre o aluno primeiro.");
+                    }
+                    break;
 
                 case 3:
                     System.out.println("Informe a matrícula do aluno:");
                     int matriculaPesquisa = scanner.nextInt();
-                    scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+                    scanner.nextLine(); 
                     System.out.println("Atividades complementares do aluno:");
                     for (AtividadeComplementar a : atividades) {
                         if (a.getMatricula() == matriculaPesquisa) {
@@ -110,10 +108,10 @@ public class Main {
                 case 4:
                     System.out.println("Informe a matrícula do aluno:");
                     int matriculaAlterar = scanner.nextInt();
-                    scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+                    scanner.nextLine(); 
                     System.out.println("Informe o número do registro da atividade:");
                     int numeroRegistroAlterar = scanner.nextInt();
-                    scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+                    scanner.nextLine(); 
                     for (AtividadeComplementar a : atividades) {
                         if (a.getMatricula() == matriculaAlterar && a.getNumeroRegistro() == numeroRegistroAlterar) {
                             System.out.println("Informe o novo status de aproveitamento (TRUE ou FALSE):");
@@ -121,10 +119,9 @@ public class Main {
                             a.setStatusAproveitamento(novoStatus);
                             System.out.println("Informe a carga horária considerada:");
                             int cargaHorariaConsiderada = scanner.nextInt();
-                            scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+                            scanner.nextLine(); 
                             a.setCargaHorariaConsiderada(cargaHorariaConsiderada);
 
-                            // Atualizar carga horária total do aluno, se a atividade for aprovada
                             if (novoStatus) {
                                 for (Aluno alunoAtual : alunos) {
                                     if (alunoAtual.getMatricula() == matriculaAlterar) {
@@ -153,7 +150,7 @@ public class Main {
                 case 6:
                     System.out.println("Informe a matrícula do aluno:");
                     int matriculaPesquisaAluno = scanner.nextInt();
-                    scanner.nextLine(); // Consumir a quebra de linha após o nextInt()
+                    scanner.nextLine(); 
                     for (Aluno alunoAtual : alunos) {
                         if (alunoAtual.getMatricula() == matriculaPesquisaAluno) {
                             System.out.println("Nome: " + alunoAtual.getNomeCompleto());
@@ -178,5 +175,3 @@ public class Main {
         }
     }
 }
-
-

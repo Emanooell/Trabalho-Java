@@ -1,4 +1,6 @@
 public class AtividadeComplementar {
+    private static int proximoNumeroRegistro = 1;
+
     private String nomeAluno;
     private int matricula;
     private int numeroRegistro;
@@ -8,15 +10,16 @@ public class AtividadeComplementar {
     private int cargaHoraria;
     private int cargaHorariaConsiderada;
 
-    public AtividadeComplementar(String nomeAluno, int matricula, int numeroRegistro, int grupoAtividade, String descricaoAtividade, int cargaHoraria) {
+    public AtividadeComplementar(String nomeAluno, int matricula, int grupoAtividade, String descricaoAtividade, int cargaHoraria) {
         this.nomeAluno = nomeAluno;
         this.matricula = matricula;
-        this.numeroRegistro = numeroRegistro;
         this.grupoAtividade = grupoAtividade;
         this.descricaoAtividade = descricaoAtividade;
         this.statusAproveitamento = false;
         this.cargaHoraria = cargaHoraria;
         this.cargaHorariaConsiderada = 0;
+        this.numeroRegistro = proximoNumeroRegistro;
+        proximoNumeroRegistro++;
     }
 
     public String getNomeAluno() {
