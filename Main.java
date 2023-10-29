@@ -15,8 +15,7 @@ public class Main {
             System.out.println("2- Cadastrar atividade complementar");
             System.out.println("3- Pesquisar as atividades complementares de um aluno");
             System.out.println("4- Alterar status da atividade complementar");
-            System.out.println(
-                    "5- Mostrar a carga horária total das atividades complementares de todos os alunos cadastrados");
+            System.out.println("5- Mostrar a carga horária total das atividades complementares de todos os alunos cadastrados");
             System.out.println("6- Mostrar a carga horária total das atividades complementares de um aluno cadastrado");
             System.out.println("7- Sair do sistema");
 
@@ -74,7 +73,7 @@ public class Main {
                             AtividadeComplementar atividade = new AtividadeComplementar(
                                     alunoEncontrado.getNomeCompleto(), alunoEncontrado.getMatricula(), grupoAtividade,
                                     descricaoAtividade, cargaHoraria);
-                            atividades.add(atividade);
+                                    atividades.add(atividade);
 
                             alunoEncontrado.adicionarCargaHorariaAtividade(cargaHoraria);
 
